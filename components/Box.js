@@ -16,8 +16,10 @@ export const Box = function Box({ safetyItem }) {
     item: safetyItem,
     end: (item, monitor) => {
       const dropResult = monitor.getDropResult();
-      if (item && dropResult) {
-        alert(`${item.name} is ${safetyItem.safetyPercentage}% veilig!`);
+      if (item.gender === dropResult.name) {
+        alert(safetyItem.description);
+      } else {
+        alert("Fout! Probeer het opnieuw.");
       }
     },
     collect: (monitor) => ({
@@ -29,7 +31,12 @@ export const Box = function Box({ safetyItem }) {
   return (
     <div ref={drag} style={{ ...style, opacity }} data-testid={`box`}>
       <p>{safetyItem.name}</p>
-      <Image src={safetyItem.imgUrl} height={100} width={100} />
+      <Image
+        alt="Voorbehoedsmiddel"
+        src={safetyItem.imgUrl}
+        height={100}
+        width={100}
+      />
     </div>
   );
 };

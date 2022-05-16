@@ -2,8 +2,8 @@ import Image from "next/image";
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "./ItemTypes.js";
 const style = {
-  height: "12rem",
-  width: "12rem",
+  height: "30rem",
+  width: "30rem",
   marginRight: "1.5rem",
   marginBottom: "1.5rem",
   color: "white",
@@ -13,10 +13,10 @@ const style = {
   lineHeight: "normal",
   float: "left",
 };
-export const Dustbin = () => {
+export const DropArea = ({ label, imgUrl, name }) => {
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
     accept: ItemTypes.BOX,
-    drop: () => ({ name: "Dustbin" }),
+    drop: () => ({ name: name }),
     collect: (monitor) => ({
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop(),
@@ -38,9 +38,15 @@ export const Dustbin = () => {
       data-testid="dustbin"
     >
       <p style={{ color: "black" }}>
-        {isActive ? "Loslaten om te gebruiken" : "Sleep een voorbehoedsmiddel"}
+        {isActive ? "Loslaten om te gebruiken" : label}
       </p>
-      <Image src="/human-body.svg" width={500} height={500} />
+      <Image
+        src={imgUrl}
+        alt="Menselijk lichaam"
+        layout="responsive"
+        width={500}
+        height={500}
+      />
     </div>
   );
 };
