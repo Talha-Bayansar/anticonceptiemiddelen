@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "./ItemTypes.js";
+import { useMediaQuery } from "react-responsive";
+
 const style = {
-  height: "30rem",
-  width: "30rem",
   marginRight: "1.5rem",
   marginBottom: "1.5rem",
   color: "white",
@@ -13,7 +13,10 @@ const style = {
   lineHeight: "normal",
   float: "left",
 };
+
 export const DropArea = ({ label, imgUrl, name }) => {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
+
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
     accept: ItemTypes.BOX,
     drop: () => ({ name: name }),
@@ -34,6 +37,8 @@ export const DropArea = ({ label, imgUrl, name }) => {
       ref={drop}
       style={{
         ...style,
+        height: isTabletOrMobile ? "16rem" : "30rem",
+        width: isTabletOrMobile ? "16rem" : "30rem",
       }}
       data-testid="dustbin"
     >

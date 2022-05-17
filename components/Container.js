@@ -1,7 +1,11 @@
 import { memo } from "react";
 import { Box } from "./Box.js";
 import { DropArea } from "./DropArea.js";
+import { useMediaQuery } from "react-responsive";
+
 export const Container = memo(function Container() {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
+
   const data = [
     {
       name: "Condoom (mannelijk)",
@@ -34,7 +38,12 @@ export const Container = memo(function Container() {
   ];
   return (
     <div className="container">
-      <div style={{ display: "flex" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: isTabletOrMobile ? "column" : "row",
+        }}
+      >
         <div style={{ overflow: "hidden", clear: "both" }}>
           <DropArea
             name="male"
