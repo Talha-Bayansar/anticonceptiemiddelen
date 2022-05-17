@@ -38,14 +38,14 @@ export const Container = memo(function Container() {
         <div style={{ overflow: "hidden", clear: "both" }}>
           <DropArea
             name="male"
-            label="Sleep een mannelijke voorbehoedsmiddel"
+            label="Sleep een mannelijke anticonceptiemiddel"
             imgUrl="/male-body.svg"
           />
         </div>
         <div style={{ overflow: "hidden", clear: "both" }}>
           <DropArea
             name="female"
-            label="Sleep een vrouwelijke voorbehoedsmiddel"
+            label="Sleep een vrouwelijke anticonceptiemiddel"
             imgUrl="/female-body.svg"
           />
         </div>
